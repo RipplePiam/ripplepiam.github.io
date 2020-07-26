@@ -35,7 +35,7 @@
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
 
 
 
@@ -52,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="css/style.css">
 
 
 
@@ -78,12 +78,14 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: true
     }
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -112,6 +114,13 @@
         <p class="header-subtitle">看得见的是视线，看不见的是视野。</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -163,7 +172,7 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a href="/">主页</a></li>
+                            <li><a href="index.html">主页</a></li>
                         
                             <li><a href="/archives/">所有文章</a></li>
                         
@@ -176,11 +185,11 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:&#101;&#108;&#105;&#116;&#101;&#98;&#111;&#111;&#107;&#115;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/RipplePiam" target="_blank" rel="noopener" title="GitHub"></a>
                             
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                                <a class="fa CSDN" href="https://blog.csdn.net/qq_27677599" target="_blank" rel="noopener" title="CSDN"></a>
                             
                         </ul>
                     </nav>
@@ -198,7 +207,7 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
                     
                       <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
                     
@@ -240,7 +249,7 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="/">主页</a></li>
+                    <li><a href="index.html">主页</a></li>
                 
                     <li><a href="/archives/">所有文章</a></li>
                 
@@ -254,11 +263,11 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:&#101;&#108;&#105;&#116;&#101;&#98;&#111;&#111;&#107;&#115;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/RipplePiam" title="GitHub"></a>
                             
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                                <a class="fa CSDN" target="_blank" href="https://blog.csdn.net/qq_27677599" title="CSDN"></a>
                             
                         </ul>
             </nav>
@@ -271,7 +280,7 @@
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/05/20/hello-world/" class="article-date">
+      <a href="2020/05/20/hello-world/" class="article-date">
       <time datetime="2020-05-20T04:24:24.346Z" itemprop="datePublished">2020-05-20</time>
 </a>
 
@@ -287,7 +296,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/20/hello-world/">Hello World</a>
+      <a class="article-title" href="2020/05/20/hello-world/">Hello World</a>
     </h1>
   
 
@@ -405,7 +414,7 @@
         var oOpenInNew = {
             
             
-            
+             post: ".article-entry a[href], .copyright a[href]", 
             
             
             
@@ -420,6 +429,23 @@
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ?) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*′?｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
